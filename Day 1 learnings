@@ -1,0 +1,154 @@
+
+#sequential execution hota hai line by line---
+
+print("Qaem is my name.", "my age is 22") #(string print)
+print("hey \n" , "wassup")
+
+print(45) #(no. print)
+
+
+print(45+72, 45-27) #(direct operations perform kr skte)
+
+
+
+#variables: 
+name="zama" #(string hai so double quotes [single n triple quotes se bhi allowed]-whi print hoga)
+age=17
+height=164
+
+print(name) #(agr double quotes hata dia to NAME variable k andar ki value print hogi.. wrna NAME hi print hojaega)
+
+print("zama's age is : ", age) #AGE variable se value nikaal li
+
+#note that ASSIGNMENT RULE:
+age=18 # mtlb 18 value jaakr AGE me store hogyi..
+
+age2=age #AGE ki hi value age2 me dedi
+
+print(age2)
+
+
+print(type(name))  #prints k variable me kis type ki value stored hai, jaise name me STRING hai, normal no.s me INT, and decimals me FLOAT ,BOOLEAN jisme True n False aati hai , and NONE mtlb no value in that variable  = DATATYPES in python
+print(type(age2))
+
+#example:
+old=True
+a = None
+A= "hey"  #python is case sensitive , a is not equal to A
+print(type(old))
+print(type(a))
+
+print(A)
+
+
+
+#CODE 1:     sum of 2 numbers: (same for any operations)
+a=5
+b=9
+sum=a+b
+print("sum is ",a+b) 
+print("another way of sum is ",sum) #ya to direct add krdo as operations python khd perform krlega, ya ir ek alag variable me value store kara ke uska print kara do
+
+
+#SINGLE LINE COMMENT  - shortcut is CTRL + / after selecting the texts
+
+
+
+#OPERATORSSSSSSSSSSSSSSSS:
+#arithmetic operators:
+x= 100
+y=12
+#then:
+print(x+y)
+print(x-y)
+print(x*y)
+print(x/y)  # division me hamesha output FLOAT value me aayega python me
+print(x%y) #modulo- returns remainder
+print(x**y) #power operator: computes X to the power Y
+
+
+#relational operators: ( >, <, >=, <=, !=, ==) jb inhe use krte hai to mtlb hota hai ke kya jo ye line of code kehne ki koshish krrhi hai wo sahi hai ya nhi...
+
+c=50
+d=49
+
+print(c==d) #checks if C and D are equal, returns TRUE or FALSE...
+print(c>d)
+print(c<=d) #sbki values TRUE ya FALSE ayengi
+print(c!=d)#TRUE ayega obv...
+
+
+#ASSIGNMENT OPERATORS: used to assign values in a variable...
+
+num=10 # num me 10 ki value
+num=num+10 #(ab NUM me purani value ka +10), isi ko short me likhne ka way hota hai:
+num+=10 
+
+#same goes for others... _=, *=, +=, /= , %= , **=
+#example:
+num/=5
+print(num) #should print the new value 6.. as num me 30 stored hai...
+
+
+#LOGICAL OPERATORS: not, and, or - gives t or F as per condition..
+#examples:
+val1= True
+val2=True
+print("answer is", val1 and val2)
+
+
+E=30
+F=40
+
+print(E==45 and F==40) #False ' dega, as ek condition glt hai...
+
+
+#TYPE CONVERSIONS: 1. conversion - kam wali value ko superior value me krna(automatic), 2. casting- zyada wali mtlb superior value ko inferior me krna (manual)
+
+#example:
+h=5
+g=2.5
+
+print(h+g) #ek float hai dusra int, pr , as float>int... conersion hoga..mtlb ans FLOAT me ayega
+
+#but:
+#j="5" #string hai
+#k=2.45 #float hai
+#print(j+k) - error ayega ab.. string me sirf string ko add kr skte float me nhi,,,, pr hum zabardasti us string ko integer me convert kr skte hai, and thats called CASTING"
+
+#so now...let's CAST:
+j=int("5") 
+k=2.45
+print(type(j))
+
+k=str(k) #converting FLOAT to STRING - possible... but not vice versa
+print(type(k))
+#print(j+k) # ab no error...BUT REMEMBER THAT STRING ko FLOAT ya INT me nhi kraya ja skta
+
+
+
+#USER INPUT:   input()  is used
+
+#example:
+# NAME=input("enter your name: ")
+
+# print("the entered name is :", NAME)
+
+# print(type(NAME))
+# #by default, INPUT jo value leta hai wo ek string hoti hai as we saw.... to change it, we have to define by ourselves:
+
+# NAME2=int(input("enter your age:"))
+# print(NAME2)
+# print(type(NAME2)) #ab int type ayega-- we used typeCasting -- same goes for float" too
+
+#question 2: input 2 numbers and their sum
+
+num1=int(input("enter a number:"))
+num2=int(input("enter another number"))
+
+print("the sum is:" ,num1+num2)
+
+#area of square:
+
+side=float(input("enter the side length:"))
+print("the area of square is :" ,side*side)
