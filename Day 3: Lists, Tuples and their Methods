@@ -1,0 +1,177 @@
+#TOPIC 1- LISTS IN PYTHON:
+
+#its similar to Arrays, but its a build in fn. in python...
+#note that, unline Arrays, python list me diff type ki value bhi store karai ja skti hai, and lists me bhi indexing hoti hai starting from 0..
+
+marks=[43.4 ,48.5 , 87.5, 90.9 ,79.8]
+
+print(marks)
+print(len(marks))
+print(type(marks)) # all of these works here similar to what we did in strings...
+
+student=["arush" , 89.5 , "Delhi"] #its a valid list 
+print(student)
+print(len(student)) #3 ayegi lenght,  as 3 elements hai separated by commas !
+
+
+#REMEMBER: LISTS are mutable in python, jabke strings are immutable..
+#example:
+str="hello"
+print(str[0]) #valid  - pr agar index aesa doge jo list me nhi hai , to error dega..
+
+#str[0]="y" #invalid - can't change
+
+#but in LISTS:
+lst=[45, 56, 57, 80, 99]
+
+print(lst[0]) 
+lst[0]=53 #valid too
+print(lst)
+
+#eg2:
+info=["aman", 45, "patna"]
+
+info[0]="raj"
+print(info) #new wali print hogi
+
+#LIST SLICING IS DONE HERE, SAME AS STRING SLICING, example:
+
+print(lst[1:3]) #obviously, ending iindex is not included, negative indexing is possible here too
+print(lst[-3:-1])
+
+
+# LIST METHODS:
+
+num=[23, 34, 22, 56 ,37]
+
+#(1) APPEND- adding one element at the last of list
+num.append(78) #adds 78 
+num.append(12)
+print(num)
+
+#(2) SORT - sorts in acsending order
+num.sort()
+print(num)
+
+#(3) sort(reverse=True) - sorts in descending order
+num.sort(reverse=True)
+print(num)
+
+#ye sorting strings wali lisyt me bhi hoti hai based on alphabets 
+fruits=["banana", "apple", "avocardo" , "guava"]
+fruits.sort()
+print(fruits)
+
+
+#(4) REVERSE- reverses the list 
+num.reverse()
+print(num)
+
+#(5) INSERT - inserts at a particular index
+num.insert(1,5) #mtlb INDEX 1 pr VALUE hojaegi 5.. and INDEX 1 pe jo tha wo ab shift hojaega to index 2
+print(num)
+
+#(6) REMOVE- removes the first occurence of an element
+
+num2=[23, 2, 3, 23, 45, 3]  
+
+
+num2.remove(23) #mtlb ye pehla wala 23
+num2.remove(3) #and ye pehla wala 3 hata dega...
+
+print(num2) # will give 2, 23, 45, 3
+
+#(7) POP - removes at a certain index...
+num2.pop(3) #pops element at index 3 - here pops (3)
+
+print(num2)
+
+#THERE ARE MANY MORE LIST METHODS TOO, WE CAN KEEP LEARNING THEM
+
+#TOPIC 2 - TUPLES IN PYTHON------------------------------
+
+#tuples are immutable, unlike lists - can't  be edited
+
+tup=(23, 34, 45, 12, 54) 
+print(type(tup))
+print(tup)
+
+print(tup[2]) # obv, valid here too.. printing a particular index 
+
+#tup[1]=4  #not allowed here, as we can't edit the tuples
+
+tup2=() #valid empty tuple
+print(tup2)
+
+#note: single values tuple ko.. comma k saath likhna wrna python usko sirf ek integer smjhega, for example:
+tupp=(1,) #valid tuple
+
+tupp2=(1) # isko integer smjh kr value assing krdega python
+
+print(type(tupp))
+print(type(tupp2))
+
+#TUPLE SLICING:
+print(tup[1:3]) # will print 34, 45
+
+#TUPLE METHODS:
+
+#(1) INDEX METHOD- to find koi element first time kab aya.. returns the index of first occurence
+
+TUP=(22, 34, 54, 22, 43)
+print(TUP.index(22)) # will return 0, as 0th index is the first occurence of 22
+
+
+#(2) COUNT - counts total repititions of a element
+
+print(TUP.count(22))
+
+
+#practice questions, for LIST:
+
+#QUESTION 1- WAP to gwt 3 movies from user and put it in a list:
+
+movies=[] #empty list banai pehle.. so that values daal ske...
+mov=input("enter your 1st movie: ")
+movies.append(mov)  # humne pehle , ek variable bnaya MOV, usme ek movie ki value store karai, and then us value wale variable ke andar se value ko list me append krdiya, so that ab hum usi variable MOV me dusri movie store kara ske..(change kr ske)
+
+mov=input("enter your 2nd movie: ")
+movies.append(mov)
+
+mov=input("enter your 3rd movie: ")
+movies.append(mov)
+
+print(movies)
+print(type(movies))
+
+# iska ek aur tareeqa bhi hai, bina koi variable use kiye APPEND krane ka... see:
+
+movie=[] # empty list
+movie.append(input("enter ur 1st movie : ")) # directly whi ka whi append kara k value input leli
+movie.append(input("enter ur 2nd movie : "))
+movie.append(input("enter ur 3rd movie : "))
+print(movie)
+
+#QUESTION 2- check if a list contains palindrome..
+
+# to check palindrome in programming.. hum pehle ek list ki copy banaenge, then us copy wali list ko reverse krenge, agr reverse krne k baadwo original list ke hi barabar aagyi, toh palindrome hai...
+#see:
+list1=[1,2,3,2,1] #palindrome hai as we can see
+
+copy_list1=list1.copy() #copy banai
+
+copy_list1.reverse() #reverse kia 
+
+if(copy_list1==list1):
+    print("lis is palindrome")
+else:
+    print("not palindrome")
+
+
+#practice questions, for TUPLES:
+
+#question 1- count students with grade A
+
+tuple=("c", "a", "b", "a", "d", "a")
+
+print(tuple.count("a"))
