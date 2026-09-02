@@ -1,0 +1,127 @@
+#"TOPIC ONE FOR TODAY: strings in python...."
+
+#3 ways of writing:
+str1= "this is way one"
+str2= 'thisis way 2'
+str3= '''this is way three'''
+
+#why 3 ways? , to use in situations like these:
+str= "hey, what's up..."
+
+#PROPERTIES OF STRINGS
+
+# (1) concatenation - adding:
+strA= "CONCAT"
+strB="ENATION"
+
+print(strA+strB) #will print the whole ...
+
+
+# (2) length of string: spaces, digits  etc sbkuch bhi count hote hai'n
+print(len(strA))
+print(len(strA+strB))
+
+#INDEXING: helps to access characters, but we can't modify it after fetching
+
+STR="qaem_rizvi"
+
+print(STR[1]) # will print 'a'.. as indexing starts from 0th place..
+
+#SLICING: accesing some parts of string..
+
+print(str[0:3]) #str' wali string me se 0,1,2th place fetch krke de dega.. (starting index included, but not the ending index)
+
+print(str[4:len(str)]) #len(str) mtlb LAST INDEX bhi include krliya using logic... if ending index nhi doge to automatic LAST INDEX le lega, and starting index nhi doge to 0th place se..
+
+#we can also use negative indexing.... starts with -1 and keep on decreasing from right to left...(ulta)
+
+print(str[-3:-1])  #should give ".." only as string me whi hai
+
+
+#STRING FUNCTIONS:
+
+STRING="i am a coder"
+
+#1:ENDS WITH
+print(STRING.endswith("er"))#checks if string is ending with given substring
+
+#2: CAPITALISE
+STRING.capitalize() #pehle letter ko capital kardo.. ye ek new string bana deta hai CAPITAL first letter ke sath, original stringme changes nhi hote hai...if we want changes in original string... then is value ka output orginal string me assign krdo..like:
+
+STRING = STRING.capitalize() #ab original string me changes aaye
+print(STRING)
+
+#3: REPLACE- ek letter ko dusre se replace krne ko , inside a string.. (substring ko bhi9 kr skte)
+
+STRING.replace("am" , "am not") #replaces, but creates another string
+STRING= STRING.replace("am" , "am not") #value daali ab
+print(STRING)
+
+#4: FIND : to find a word or letter.. jaha mila (first occurence) uska 1st index ajayega..
+
+print ( STRING.find( "c")) #gives the index of first C it sees in our string
+#if aesa find kia jo exist hi nhi krta, to (-1) return hoga..as it does'nt exist in general until slicing
+
+
+#5: COUNT : counts the number of occurences of a substring..
+
+print(STRING.count(" a")) # should give 2
+print(STRING.count("am"))
+
+# bhot se functions hai'n ... just write STR. and see the list..
+
+#solved examples:
+# name=input("please enter your first name: ")
+# print("length of ur name is: " ,len(name))
+
+
+# #second example:
+# dollar= input("enter many dollar signs: ")
+
+# print(dollar.count("$"))
+
+#(we've commented out all the user inputs before going to next topic)
+
+
+#----------------------------------------------
+
+
+
+#"TOPIC TWO FOR TODAY: conditional statements..."
+
+#if-elif-else:  (indentation bht zroori hai)
+#1:
+age = 21
+if(age>=18):
+    print("can apply for license.\nAnd he can vote too")
+
+#2:
+light= "red"
+
+if(light=="green"): #1st conditional statement should always be IF
+    print("GO")
+elif(light=="yellow"):  #can also write IF here too...
+    print("STOP")
+else:
+    print("FAULTY SIGNAL ! AUR DO MODI KO VOTE!!")
+
+#note : agr 2 IF statement hai, to correct hone par dono execute hogi.. pr agar ek IF and dusri ELIF hai, to agr If sahi hogyi to loop exit hojaega..
+
+#solved example:
+
+marks_achieved=int(input("enter your marks: "))
+
+if(marks_achieved>=90):
+    print("A grade")
+elif(marks_achieved>=80 and marks_achieved<90):
+    print("B grade")
+elif(marks_achieved>=70 and marks_achieved<80):
+    print("C grade")
+
+else:
+    print("SAALEY PADHTA NHI THA KYA MEDIOCRE??!")
+
+
+#NESTING: if" ke andar "if"
+
+
