@@ -1,0 +1,225 @@
+#TOPIC 1: DICTIONARIES
+
+#jaise english dictionary me ek word and uski meaning hoti hai, waise hi python me bhi key and uski value hoti hai within a dcitionary, if agr kuch search krna hai to hum key search krte hai and uski value khud se nikal aati hai.. jaise:
+#structure of dictionary:
+
+# dictionary={
+#     "key" : "value",
+#     "key2" : "value2"
+# }
+
+#to print a value:
+
+#print(dictionary["value"])
+
+
+info={
+    "key": "value",  # key generally strings ko banante haim, but float ya int value ko bhi bana skte hai, tuple ko bhi (as wo bhi immutable hota hai)... and obv, VALUE me kuch bhi daal skte hai almost, including list and tuple
+    "name": "qaem",
+    "age": 22,
+    "marks": 97.5,
+    "married": False,    #as we can see har data type allowed hai
+    "subjects": ["python", "DSA" , "data analytics"],   #ek LIST store kara di , in dictionary - WHICH IS ANOTHER WAY OF STRING MORE THAN ONE VALUE FOR A GIVEN KEY, we can also store mutiple values using tuple
+    "topics": ("dict" , "set")  #ek TUPLE store kara dia in dictionary for multiple values for a key
+}
+print(info)
+print(type(info))  #'dict' type
+
+print(info["name"])  #ek particular key se value nikalwa rhe.. if the key doesn't exist, to error ajayega
+
+
+info["name"] = "zama"  # name" wali key ki value replaced [overwrite hogyi]
+
+info["surname"] = "rizvi"  #ek new key hi create krdi with a value 
+
+print(info["surname"])
+
+#PROPERTIES OF DICTIONARIES:
+
+#(1) - they are unordered... mtlb indexing nhi hoti hai as such
+#(2) - mutable.. they can be changed
+#(3) - can't create duplicate keys.. mtlb same naam ki 2 keys aren't allowed
+
+null_dict = {}  #empty dictionary
+
+print(null_dict)
+
+#NESTED DICTIONARIES: kisi key ki value ko apne aap me khud ek dictionary bana skte hai'n...
+
+student ={
+    "name": "qaem",
+    "subjects": {
+        "AI": 9,
+        "DBMS": 10,
+        "CRYPTO":9
+    }
+
+}
+
+print(student)
+print(student["subjects"])  #andar wali dictionary print hogi
+
+print(student["subjects"] ["AI"])   #ye us subjects wali dictionary ke andar se AI ki value output dega
+
+#DICTIONARY METHODS:
+
+#(1) - to get all keys:
+
+print(student.keys())  #returns the primary keys.. andar ki dict wali nhi
+#iska type hoga 'dict_keys'
+#we can also Typecast it into a list:
+
+print(list(student.keys()))  # and then we can count the number of keys:
+print(len(list(student.keys())))  #prints the length of list = no. of keys in the dictionary
+
+#(2) - to get all the values:
+
+print(student.values()) #obv, isko bhi list me convert kr skte hai using same approach...
+
+#(3)  - to get all (key, value)  pairs as tuples...
+
+print(student.items())
+print(len(list(student.items()))) # whi jo upr kia tha...
+
+
+#we can individually access one of these tuples too.. pehle sare tuples ko ek list me store krlo and then INDEXING use krke access krlo..:
+
+pairs= list(student.items())   #list bana k store krwa diya
+
+print(pairs[0])  #ab 0th index.. yani dictionary ka 1st tuple print krwaya - "name" : "qaem"  print hoga sirf
+
+
+
+#(4)  - to get a partiular value by using it's key:
+
+print(student.get("name"))   # "qaem" return hoga
+
+print(student["name"])  #YE WO OLD WAY JO UPR SEEKHA THA.. isme bhi same "qaem" return hoga...
+
+
+#THEN WHAT'S THE DIFFERENCE?.. see:
+
+#print(student["name2"] )   # -> ERROR degi...
+
+print(student.get("name2"))  # -> NONE" return kregi... no error
+
+
+#(5) - UPDATE: dictionary me new value pair daalne ko.. even ek dusri dictionary bhi daal skte:
+
+student.update({"gender" : "male"})   # tuples in curly braces obv
+
+print(student) # ab ye newly added tuple bhi dikhaega...
+
+#we can also add a whole new dictionary as a new tuple value:
+
+new_dict={ "handsome": "yes" , "intelligent" :"absolutely"}
+
+student.update(new_dict)  #dhyan rhe.. agr ye new_dict me koi Key Value aesi hui jo already original dictionary ki key hai, to value overwrite hojaegi
+
+print(student)
+
+#THERE ARE MANY MORE METHODS TOO OBV...
+
+#---------------------------------------------------------------------------------------------
+
+#TOPIC 2 - SETS IN PYTHON:
+
+# SETS are collection of Unordered items.. har element of a set must be unique ,and immutable too.. mtlb int, float,tuple, boolean etc etc store kar skte hai'n..but list and dictionary nhi, as they're mutable
+
+#dhyan dena, ke SET mutable hote hai (mtlb elemtn add ya remove kia ja skta hai)... pr set k andar ke elements IMMUTABLE hote hain... mtlb can't be changed
+
+collection ={1 , 2 ,3 ,4 ,3 ,4, "hello" , "world" , 3.14}
+
+print(type(collection)) #'set'  ayega
+print(collection)   #dhyan dena k printing ORDER me nhi hogi.. randomly hogi 
+#also.. set' , duplicate values ko sirf ek baar print krta hai
+
+print(len(collection)) #ye bhi duplicate items ko sirf ek baar lega
+
+
+null_set={} #ye empty set nhi hai, empty dictionary hai, 
+empty_set= set() #YE HAI EMPTY SET
+
+print(type(empty_set))
+
+
+#METHODS OF SET:
+
+#(1) - ADD method: adds an element to the set  ... as elements immutable hote hai, tuple daal skte hai'n pr list ya dictionary nhii - let's say agr list daali to error ayega "UN-HASHABLE TYPE: LIST".. cuz hash values(we know) change ho skti list ki ..
+
+collection.add(45) 
+collection.add("name")
+collection.add(("yo" , "hey" , "wow"))  #ek poora TUPLE add krrhe hai'n
+#agr duplicate values add kroge to bhi ek hi baar print hoga as we know
+
+print(collection)
+
+#(2)  - REMOVE:
+
+collection.remove(4) #does'nt matter if value repeated hai.. sari uda dega
+collection.remove(45)
+print(collection)
+
+
+#(3)  - CLEAR: empties the set
+
+print(len(collection))
+
+collection.clear()
+print("new length is: " ,len(collection))
+
+#(4)  - POP: gets a random value
+
+collection={1, 2, 4, "hey", "yo", 663}
+
+print(collection.pop())
+print(collection.pop())
+
+#(5) - UNION - jo join 2 sets just as in maths - output ek set ayega
+
+collection2={23, 45, 56, 78, 4}
+
+collection.union(collection2)
+
+print(collection.union(collection2))
+
+#(6) - INTERSECTION : iska bhi output ek set ayega
+
+print(collection.intersection(collection2))
+
+
+
+
+#QUESTION 1: WAP to enter 3 subjects k marks and store them in a dictionary:
+
+report={} #empty dict liya pehle
+
+temp= int(input("enter the marks of AI: ")) #ek temporary variable me store kraya marks ko..
+report.update({"AI" : temp}) # then dictionary me ek naya TUPLE add kia, bs VALUE ki jgh us variable ko daal dia
+
+temp= int(input("enter the marks of CN: ")) #then variable ko overwrite krdia for 2nd subject
+report.update({"CN" : temp})
+
+temp= int(input("enter the marks of DBMS: "))
+report.update({"DBMS" : temp})
+
+print(report)
+
+
+#QUESTION 2: FIGURE OUT A WAY TO STORE 9, 9.0 AS DIFF VALUES IN A SET...
+
+#as we know.. python, set me, 9 and 9.0 ko same leta hai, so SET me ek hi baar 9 print hoga by default, but if we :
+
+
+#way 1:
+#ek ko string bana do...
+
+set1={9, "9.0"}
+
+print(set1)
+
+#way 2: using built-in data types: tuple bana ke save krdo..
+set2={ ("float", 9.0), ("int", 9)}
+
+print(set2)
+#----------------------------------END--------
