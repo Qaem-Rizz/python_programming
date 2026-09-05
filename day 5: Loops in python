@@ -1,0 +1,119 @@
+#LOOPS IN PYTHON: used to repeat Instructions ,  they are of two types
+
+# TOPIC 1 ->  WHILE LOOP: runs until the condition gets false... jo varibale use krrhe usko ITERATOR kehte hai, and ek baar loop ke chalne ko ek ITERATION kehte hai
+
+#infinite loop: when the condition never gets false!
+#jaise:
+
+# i = 5  [i is iterator]
+# while i<= 10:
+#     print (" endless loop")   as we haven't crafted any stopping condition here cuz i < 10 hmesha rhega cuz i =5, its a infinite loop..
+
+# Q 1 ) printing numbers in a sequence:;
+i =1
+while i<=10:
+    print(i)
+    i +=1
+print("the value of i at the end is : ", i)  # it will give i = 11
+
+# Q 2) taking user input to print the table of a number:
+n=int(input("enter a number: "))
+i= 1
+while i<= 10:
+    print( i*n)
+    i +=1
+print("the table upto 10 is printed")
+# -------------------------------------------------
+
+# USING WHILE LOOP IN A LIST OR TUPLE:
+
+nums=[1, 4, 9, 16, 25, 36, 49, 64, 81,100]   #list
+#now dhyan se smjho, in a list or tuple, index vary krta hai... so index hi ko variable  bana lo.... always remember Iterator and looping condition bana li, to 75% kaam done.
+
+idx=0 #qki indexing starts from 0 and index ko hi iterator bnaya hai to it'll start from initial value 0
+
+while idx< len(nums):   # mtlb jabtk idx variable ki value length of list se ek kam na hojae [ which means last element tk, cuz list ka last element is gonna be 9th index here and length of list is 10.. so stopping condition valid hai]
+
+    print(nums[idx]) # to print us particular index me NUMS list ke andar ka element...
+    idx+=1 #and then idx ka increment krdia
+
+
+
+
+
+# searching for a particular element, in a tuple:
+tup = (1,2,3,4,5,6,7,8,9,10) # tuple
+
+x= int(input("enter the number to search: "))
+i=0
+while i< len(tup):
+    if (tup[i]==x):
+        print ("found at :",i)
+    else:                          # just to see than loop baqi har index pe bhi chalrha hai !!
+        print("finding")
+    i+=1                  # ye increment condition ko bht dhyan se IF-ELSE statement ke bahar likhna, kyunki agr IF statement ke andar likh diya, to If statement false hone pr increment hoga hi nhi, and loop.. infinite loop banjayega if i ka increment hi na ho
+    
+
+#BREAK and CONTINUE KEYWORD :
+
+# (1) break : to come out of the loop when the condition matches
+i= 1
+while i<= 10:
+    print(i)   # agr is print statement ko bhi If me likhte, to sirf 3 print hota akela obv (basic logic)
+    if (i==3):
+        break   # mtlb hua ke jaise hi I =3 hojaega hmara loop whi exit hojaega , loop aur aage run nhi krega , so 4 to 10 print nhi hoga !
+    i+=1  # iterator ki value update hmesha IF k bahar , as we learnt ... 
+
+# (2) continue : jis iteration pr condition mili, usko ignore krke next iteration pr chala jayega.. as in SKIP 
+
+# example: print only odd numbers from 1 to 10:
+i=1 
+while i <=10 :
+    if (i%2 == 0):  #agr I even hua toh : I ko badha do and jo I tha us poore iteration ko skip krdo
+        i+=1
+        continue
+    print(i)    #agr I even nhi hai, mtlb ODD hai... toh fir print krdo.. and then increment krdo...
+    i+=1
+# _______________________________________________________________________________
+print("FOR LOOP STARTS FROM HERE ")
+# TOPIC 2 -> FOR LOOP : used for sequencial traversal , jaise ke list, tuple ya string me...
+
+# eg:
+list =[1,2,3,4]
+
+for el in list:     #ye jo "el" hai, ye ek variable hai (can be named anything) jisme ek ek krke list ke sbhi elements jayenge and then baad ke operations perform honge
+    print (el)
+
+# eg 2: 
+tuple =("hey", "wassup", 100)
+for text in tuple:
+    print(text)
+
+#eg 3: 
+string = "INSTAGRAM"
+for letters in string:
+    print(letters)
+
+# now dhyan do, we can also use an optional ELSE to do something only after the loop fully ends , which means something like agr loop poora chale tbhi kaam kre, mtlb agr BREAK hojae beech me sirf tbhi ELSE execute ho to use kr skte... example se smjho:
+
+str= "FACEBOOK"
+
+for letter in str:
+    if(letter=="E"):
+        print("E found , loop breaks now")
+        break
+    print(letter)
+else:
+    print("end")  # we will see that ye wala END print nhi hoga, qki break ne loop ko exit kra diya loop poora nhi chala.. pr agr break na hota... to loop end hone pe ELSE k andar ka work execute hota
+
+
+# jaise yha dekho: yha maan lo maine break" nhi likha andar me.. to loop exit nhi hoga so obv else k andar ka execute hoga...
+str2= "FACEBOOK"
+
+for letter in str2:
+    if(letter=="E"):
+        print("E found , loop breaks now")
+        
+    print(letter)
+else:
+    print("end")
