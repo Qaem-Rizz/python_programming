@@ -1,0 +1,104 @@
+import random #used RANDOM so that har baar actual random shuffle ho
+deck =[]
+colors= ["red", "yellow", "green", "blue"]
+for col in colors:
+    deck.append([col,0]) # 0th number ka card 1 hi baar hota hai so ek baar hi append
+
+    for num in range(1,10):
+      deck.append([col,num]) #baqi har numbered card 2 baar hote hai, so do baar append
+      deck.append([col,num])
+
+#till now, the length of deck should be 76 (numbered cards)
+
+actions =["skip", "reverse", "+2"] #action cards
+for col in colors:
+  for act in actions:
+    deck.append([col,act]) # 2 baar, as har action card 2 hota hai
+    deck.append([col,act])
+
+for i in range(4):
+  deck.append(["wild","color change"]) # har wild card 4 piece hota hai, so range 0 se 4 tk = 3 cards ka loop
+  deck.append(["wild", "+4"])
+
+random.shuffle(deck) #to shuffle the deck after putting in all the cards
+
+print("\nThe deck of cards is :", deck)
+print("\nThe length of deck is:", len(deck)) # 108 hona chahiye
+
+player=[]
+computer=[]
+
+for i in range(7): # 0 se 6 tak draw hoga (as player and computer dono ko 7-7 cards)
+  player.append(deck.pop()) #player ki list me card daalo using pop()
+  computer.append(deck.pop()) #same for computer
+
+print("\nPlayer got the cards: ", player) #to display kaunsa mila
+print("\ncomputer got the cards: " , computer) # same
+
+floor= [deck.pop()]  #table pe jo card rehta hai (initially ek hi card..pop()use kiya with same logic)
+
+print("\nThe card on the table is:", floor)  #table pe jo card pada hai usko show krne ko
+
+def allowed_play(card, floor): # ek function bnaya "allowed_play" naam se
+  color,value = card
+  f_color, f_value=floor[-1]  # [-1] index pe jo card hai FLOOR list me, sirf usi ko consider krrhe , cuz waise bhi only that matters
+
+  if color==f_color:  #if hmare card ka color floor card se same.. then no issues
+    return True
+  elif value == f_value: #if value same , then no issues
+    return True
+  elif color == "wild":  #if wild card khelna hai, then no issues
+    return True
+  else:
+    return False
+  
+while True:  #ek while loop which only runs if upr ki conditions are true
+  
+  print("\nAfter last move, the topmost played card on the table:", floor[-1]) #again, just to see floor (table pe) kaunsa card hai
+  print("\nThe cards you have:") 
+
+  for i in range(len(player)):
+    print(i ,":", player[i])  # mere har index value ke saath mere us index ka card print hojaega from my list named player"
+
+  move = input("Please enter the card number to play, or D to draw a card: ") #initinally string type input rkha hai, cuz D bhi allow krrhe
+
+  if move=="D":
+    player.append(deck.pop())  #if DRAW krna hai, toh player ki list me add krdo
+    print("\nYou drew a card from the deck, your updated player deck is: ", player) #updated list of player's card print krdo
+    break
+  
+  move=int(move) #then, move ko INT type banao.. so that indexing me use hoske...
+  chosen_card = player[move]  # and then us index ka card player ki list se nikaal kr CHOSEN_CARD me daal do temporarily
+
+  if allowed_play(chosen_card,floor): #if wo chosen card allowed_play fuction ko satisfy krrha..
+    floor.append(chosen_card)  # toh table pe phek do us card ko
+    player.pop(move)  #player ke card list me se pop krdo usko
+    print("after playing the card, the updated player's deck :",player)
+    print("\nyou played the card:" , chosen_card) 
+    break
+  else:
+    print("\nInvalid move, try again...")  # if satisfy nhi krrha, invalid move
+
+  if len(player)==0:  # poore time, jaise hi length of player's list ZERO hogyi.. player game jeet jayega..
+    print("YOU WON THE GAME... WOOHOOOO !!!")
+    break
+  
+comp_played=False  #just a temporary variable so that isko IFk saath use kr ske in line 99
+print("\nAfter player's move, The topmost card on the table is :", floor[-1])
+print("\nCOMPUTER'S CHANCE NOW...")
+for card in computer: #traverse krne ke liye through the computer's deck
+  if allowed_play(card,floor):  # if allowed_play function ko satisfy krrha hai toh...
+      print("\nthe available deck of computer is: ",computer)
+      floor.append(card)   #[mtlb humne traverse kia through the computer's list and jo pehla card mila usko khel dia computer ne]
+      computer.remove(card) # computer deck se remove 
+      print("\ncomputer played:", card)
+      print("\nafter it's move, the updated deck of computer is: ",computer)
+      print("\nthe latest card on the table is :", floor[-1])
+      comp_played=True  # mtlb computer ne kheldia to break krenge ab loop se...
+      break
+if comp_played==False:  #agr poori list me koi bhi card satisfy na kre toh 
+      computer.append(deck.pop()) #ek card uthaega computer
+      print("\nComputer Drew a card from the deck: ",computer[-1] ) #just to see kaunsa card uthaya
+
+
+
