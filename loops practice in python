@@ -1,0 +1,74 @@
+# PATTERN 1: Simple Right-Angled Triangle (Stars)
+# - Outer loop (i) controls the rows (1 to n).
+# - Inner loop (j) controls the columns/stars in each row (1 to i).
+
+
+print("Simple Star Triangle")
+n = 5
+
+for i in range(1, n + 1):          # Row loop
+    for j in range(1, i + 1):      # Column loop prints 'i' stars per row
+        print("*", end=" ")        # end=" " prevents going to a new line
+    print()                        # Moves cursor to the next line after row ends
+
+print("\n" + "="*40 + "\n")
+
+
+
+# PATTERN 2: Inverted Right-Angled Triangle (Stars)
+# - Row loop starts from max 'n' and goes down to 1 using step -1.
+# - Inner loop prints stars matching the decreasing row number.
+
+print("Inverted Star Triangle")
+
+for i in range(n, 0, -1):          # Rows go: 5, 4, 3, 2, 1
+    for j in range(1, i + 1):      # Prints stars equal to current row 'i'
+        print("*", end=" ")
+    print()
+
+print("\n" + "="*40 + "\n")
+
+
+# PATTERN 3: Number Triangle (Row Number Pattern)
+# - Instead of printing a fixed star (*), print the row number 'i'.
+# - It repeats the current row number 'i' times.
+
+print("Number Triangle (Repeating Row)")
+
+for i in range(1, n + 1):          # Row loop
+    for j in range(1, i + 1):      # Column loop
+        print(i, end=" ")          # Print row number instead of '*'
+    print()
+
+print("\n" + "="*40 + "\n")
+
+
+# PATTERN 4: Centered Pyramid Star Pattern
+# - We need two things per row: Leading spaces and Stars.
+# - Spaces decrease as rows increase: (n - i) spaces.
+# - Stars increase: 'i' stars separated by spaces.
+
+print("Centered Pyramid Star Pattern")
+
+for i in range(1, n + 1):
+    # Print spaces to center-align the triangle
+    print(" " * (n - i), end="")
+    # Print stars with a space after each star
+    print("* " * i)
+
+print("\n" + "="*40 + "\n")
+
+
+# PATTERN 5: Floyd's Triangle (Continuous Numbers)
+# - Keep a separate counter variable starting at 1.
+# - Increment the counter continuously across rows without resetting.
+
+print("Floyd's Triangle (Consecutive Numbers)")
+
+current_number = 1                 # Track continuous numbers
+
+for i in range(1, n + 1):
+    for j in range(1, i + 1):
+        print(current_number, end=" ")
+        current_number += 1        # Increment so numbers keep growing (1, 2, 3...)
+    print()
